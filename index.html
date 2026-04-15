@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF Academy | 영어 세일즈 스킬 특강</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ff-navy: #0D1B2A;
+    --ff-blue: #1A3A5C;
+    --ff-accent: #2E7EF5;
+    --ff-light: #E8F0FE;
+    --ff-muted: #8A9BB0;
+    --ff-line: #DDE4EE;
+    --ff-bg: #F6F8FC;
+    --ff-white: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    background: var(--ff-bg);
+    color: var(--ff-navy);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ff-navy);
+    color: white;
+    padding: 72px 40px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(46,126,245,0.12);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 10%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(46,126,245,0.07);
+  }
+
+  .hero-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(46,126,245,0.2);
+    color: #7EB8FF;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+  }
+
+  .hero-label span {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #7EB8FF;
+    display: inline-block;
+    animation: blink 1.6s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1.15;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: #7EB8FF;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 40px;
+    font-weight: 300;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .hero-tag {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.75);
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 6px;
+  }
+
+  /* MAIN */
+  .main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 24px 80px;
+  }
+
+  /* HIGHLIGHT STRIP */
+  .highlight-strip {
+    background: var(--ff-accent);
+    color: white;
+    border-radius: 12px;
+    padding: 20px 28px;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .highlight-strip .icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .highlight-strip p {
+    font-size: 14px;
+    line-height: 1.65;
+    font-weight: 400;
+  }
+
+  .highlight-strip strong {
+    font-weight: 600;
+  }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 48px;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ff-accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--ff-line);
+  }
+
+  /* INFO TABLE */
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .info-table tr {
+    border-bottom: 1px solid var(--ff-line);
+  }
+
+  .info-table tr:last-child {
+    border-bottom: none;
+  }
+
+  .info-table td {
+    padding: 14px 0;
+    vertical-align: top;
+    font-size: 14px;
+  }
+
+  .info-table td:first-child {
+    width: 110px;
+    color: var(--ff-muted);
+    font-size: 13px;
+    font-weight: 500;
+    flex-shrink: 0;
+    padding-right: 12px;
+  }
+
+  .info-table td:last-child {
+    font-weight: 500;
+    color: var(--ff-navy);
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--ff-light);
+    color: var(--ff-accent);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* CURRICULUM */
+  .curriculum {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cur-item {
+    background: var(--ff-white);
+    border: 1px solid var(--ff-line);
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .cur-item:hover {
+    border-color: var(--ff-accent);
+    box-shadow: 0 2px 12px rgba(46,126,245,0.08);
+  }
+
+  .cur-num {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--ff-navy);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .cur-content {}
+
+  .cur-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ff-navy);
+    margin-bottom: 4px;
+  }
+
+  .cur-desc {
+    font-size: 13px;
+    color: var(--ff-muted);
+    line-height: 1.6;
+  }
+
+  /* BONUS */
+  .bonus-card {
+    background: var(--ff-navy);
+    color: white;
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 13px;
+  }
+
+  .bonus-card .dot {
+    width: 8px; height: 8px;
+    background: #7EB8FF;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* TAGS — FOR WHOM */
+  .tag-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tag-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--ff-white);
+    border: 1px solid var(--ff-line);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .tag-row .check {
+    color: var(--ff-accent);
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* NOTICE */
+  .notice-box {
+    background: #EDF4FF;
+    border-left: 3px solid var(--ff-accent);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: var(--ff-blue);
+    line-height: 1.7;
+  }
+
+  .notice-box strong {
+    color: var(--ff-navy);
+    font-weight: 600;
+  }
+
+  /* CTA */
+  .cta-box {
+    background: var(--ff-navy);
+    border-radius: 14px;
+    padding: 36px 32px;
+    text-align: center;
+    color: white;
+    margin-top: 56px;
+  }
+
+  .cta-box h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+
+  .cta-box p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 28px;
+  }
+
+  .cta-meta {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-bottom: 28px;
+  }
+
+  .cta-meta-item {
+    text-align: center;
+  }
+
+  .cta-meta-item .label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 4px;
+    letter-spacing: 0.06em;
+  }
+
+  .cta-meta-item .value {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--ff-accent);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 14px 40px;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, transform 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .cta-btn:hover {
+    background: #1A6FE0;
+    transform: translateY(-1px);
+  }
+
+  .cta-contact {
+    margin-top: 18px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 12px;
+    color: var(--ff-muted);
+    border-top: 1px solid var(--ff-line);
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 480px) {
+    .hero { padding: 52px 24px 48px; }
+    .cta-meta { gap: 20px; }
+    .highlight-strip { flex-direction: column; gap: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">
+      <span></span>
+      FF Academy · 특강 모집
+    </div>
+    <h1 class="hero-title">
+      English Sales Skill<br>
+      <em>Special Lecture</em>
+    </h1>
+    <p class="hero-subtitle">오피스 투어부터 클로징까지 — 현장에서 바로 쓰는 실전 영어</p>
+    <div class="hero-tags">
+      <span class="hero-tag">신청기간 4/27(월)~5/6(수)</span>
+      <span class="hero-tag">실전 표현 위주</span>
+      <span class="hero-tag">패스트파이브 특화</span>
+      <span class="hero-tag">대면 1회차</span>
+
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- HIGHLIGHT -->
+  <div class="highlight-strip section">
+    <div class="icon">💬</div>
+    <p>외국인 고객 앞에서 머릿속이 하얘진 경험 있으신가요?<br>
+    패스트파이브 현장에 딱 맞는 영어 표현을 다룹니다.</p>
+  </div>
+
+  <!-- 교육 개요 -->
+  <div class="section">
+    <div class="section-label">교육 개요</div>
+    <table class="info-table">
+      <tr>
+        <td>교육자</td>
+        <td>원혜리 팀장님</td>
+      </tr>
+      <tr>
+        <td>대상</td>
+        <td>오피스세일즈그룹 & 지점운영그룹</td>
+      </tr>
+      <tr>
+        <td>일정</td>
+        <td><strong>5월 13일 수요일 오후 7시</strong> <span class="badge">1회차</span></td>
+      </tr>
+      <tr>
+        <td>모집 인원</td>
+        <td>15 ~ 20명 내외</td>
+      </tr>
+      <tr>
+        <td>교육 장소</td>
+        <td>선릉센트럴점 컨퍼런스홀</td>
+      </tr>
+      <tr>
+        <td>교육 신청 마감</td>
+        <td>5/6(수) 18시까지</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 교육 내용 -->
+  <div class="section">
+    <div class="section-label">교육 내용</div>
+    <div class="curriculum">
+      <div class="cur-item">
+        <div class="cur-num">1</div>
+        <div class="cur-content">
+          <div class="cur-title">오피스 투어 영어 실전 훈련</div>
+          <div class="cur-desc">인사 및 웰컴 → 공간·서비스 소개 → 가격 협상 → 클로징<br>투어 전체 흐름을 영어로 자신 있게 이끄는 법</div>
+        </div>
+      </div>
+      <div class="cur-item">
+        <div class="cur-num">2</div>
+        <div class="cur-content">
+          <div class="cur-title">세일즈 단계별 핵심 표현</div>
+          <div class="cur-desc">첫 미팅 / 니즈 파악 / 제안 / 반론 대응 / 팔로업(F/U)<br>각 상황에서 바로 꺼내 쓸 수 있는 표현 집중 학습</div>
+        </div>
+      </div>
+      <div class="cur-item">
+        <div class="cur-num">3</div>
+        <div class="cur-content">
+          <div class="cur-title">외국인 고객 FAQ 대응</div>
+          <div class="cur-desc">현장에서 자주 받는 질문, 당황하지 않고 자연스럽게 받아치는 패턴 훈련</div>
+        </div>
+      </div>
+      <div class="cur-item">
+        <div class="cur-num">4</div>
+        <div class="cur-content">
+          <div class="cur-title">비즈니스 이메일 작성</div>
+          <div class="cur-desc">재계약 협상 / 미팅 제안 / 일정 조율 / 팔로업 — 바로 쓸 수 있는 템플릿</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bonus-card" style="margin-top: 12px;">
+      <div class="dot"></div>
+      <div>패스트파이브 사업 관련 <strong>핵심 어휘집</strong> 별도 제공</div>
+    </div>
+  </div>
+
+  <!-- 이런 분께 -->
+  <div class="section">
+    <div class="section-label">이런 분께 추천합니다</div>
+    <div class="tag-list">
+      <div class="tag-row">
+        <div class="check">✓</div>
+        <div>외국인 고객 응대가 어색하고 자신 없으신 분</div>
+      </div>
+      <div class="tag-row">
+        <div class="check">✓</div>
+        <div>기본 회화는 되지만 비즈니스 영어 경험이 부족하신 분</div>
+      </div>
+      <div class="tag-row">
+        <div class="check">✓</div>
+        <div>문법은 몰라도 자연스럽게 말하고 싶으신 분</div>
+      </div>
+      <div class="tag-row">
+        <div class="check">✓</div>
+        <div>패스트파이브 현장에 딱 맞는 실전 표현을 익히고 싶으신 분</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box section">
+    <h3>지금 바로 신청하세요</h3>
+    <p>신청 마감 5/6(수) 까지</p>
+
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0OUayrIf8bf9UFXO3Z9sH5yNQnUTXwsiX5pWzjveEGzh6qw/viewform?usp=publish-editor" class="cta-btn" target="_blank" rel="noopener noreferrer">신청하기 →</a>
+    <div class="cta-contact">문의: @구연정</div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  FF Academy · 패파 아카데미
+</div>
+
+<script>
+  const sections = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
