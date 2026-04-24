@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF Academy — LinkedIn 활용 강의</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+<style>
+  :root {
+    --navy: #0A1628;
+    --blue: #0077B5;
+    --blue-light: #00A0DC;
+    --gold: #C8972A;
+    --gold-light: #F0C060;
+    --cream: #F7F4EE;
+    --white: #FFFFFF;
+    --gray: #8A8A8A;
+    --gray-light: #E8E4DC;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Pretendard', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.7;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 44px 40px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(0,119,181,0.18);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -40px;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: rgba(200,151,42,0.12);
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding: 6px 18px;
+    border: 1px solid rgba(200,151,42,0.4);
+    border-radius: 2px;
+  }
+  .hero h1 {
+    font-family: 'Pretendard', sans-serif;
+    font-size: clamp(36px, 6vw, 58px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--gold-light);
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 16px;
+    letter-spacing: 0.05em;
+  }
+  .hero-divider {
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin: 16px auto;
+  }
+  .hero-tagline {
+    font-size: 16px;
+    color: rgba(255,255,255,0.82);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--blue);
+    padding: 22px 40px;
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+  .stat {
+    text-align: center;
+    padding: 0 40px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 24px;
+  }
+
+  .section {
+    margin-bottom: 56px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--navy);
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1.5px solid var(--gray-light);
+    letter-spacing: -0.02em;
+  }
+
+  /* ── 교육 목적 카드 ── */
+  .goal-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .goal-card {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-top: 3px solid var(--blue);
+    padding: 22px 18px;
+    border-radius: 2px;
+  }
+  .goal-card:nth-child(2) { border-top-color: var(--gold); }
+  .goal-card:nth-child(3) { border-top-color: var(--navy); }
+  .goal-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .goal-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .goal-desc {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  /* ── 교육 개요 ── */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--gray-light);
+    border-radius: 2px;
+    overflow: hidden;
+    background: var(--white);
+  }
+  .overview-item {
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--gray-light);
+    border-right: 1px solid var(--gray-light);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .overview-item:nth-child(2n) { border-right: none; }
+  .overview-item:nth-last-child(-n+2) { border-bottom: none; }
+  .ov-key {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    min-width: 64px;
+    margin-top: 2px;
+  }
+  .ov-val {
+    font-size: 14px;
+    color: var(--navy);
+    line-height: 1.6;
+  }
+  .ov-val strong { font-weight: 700; }
+
+  /* ── 강사 소개 ── */
+  .instructor-card {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: 2px;
+    padding: 28px 28px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .instructor-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--gold-light);
+    flex-shrink: 0;
+  }
+  .instructor-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .instructor-role {
+    font-size: 12px;
+    color: var(--blue);
+    font-weight: 500;
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+  }
+  .instructor-bio {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.8;
+  }
+  .instructor-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .itag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border: 1px solid var(--gray-light);
+    border-radius: 20px;
+    color: var(--gray);
+  }
+
+  /* ── 커리큘럼 ── */
+  .curriculum {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--gray-light);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  /* ── 커리큘럼 카드 ── */
+  .curriculum {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .curr-card {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: 6px;
+    padding: 20px 24px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .curr-left {
+    min-width: 64px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .curr-week {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    margin-bottom: 6px;
+  }
+  .curr-date {
+    font-size: 11px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+  .curr-body { flex: 1; }
+  .curr-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .curr-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .curr-type-badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid var(--gray-light);
+    color: var(--gray);
+    white-space: nowrap;
+  }
+  .w1-bg { background: var(--blue); }
+  .w2-bg { background: #1A6B3C; }
+  .w3-bg { background: #B8650A; }
+  .w4-bg { background: #8B1A3A; }
+  .w5-bg { background: #4A1A6B; }
+  .curr-desc {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  /* ── 혜택 ── */
+  .benefits {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .benefit-item {
+    background: var(--white);
+    border: 1px solid var(--gray-light);
+    border-radius: 2px;
+    padding: 18px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .benefit-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .benefit-text {
+    font-size: 13px;
+    color: var(--navy);
+    line-height: 1.65;
+  }
+  .benefit-text strong { font-weight: 700; display: block; margin-bottom: 2px; }
+
+  /* ── 유의사항 ── */
+  .notice-box {
+    background: #FDF8EF;
+    border: 1px solid rgba(200,151,42,0.3);
+    border-left: 3px solid var(--gold);
+    padding: 20px 22px;
+    border-radius: 0 2px 2px 0;
+  }
+  .notice-box p {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 6px;
+  }
+  .notice-box p:last-child { margin-bottom: 0; }
+  .notice-box strong { color: var(--navy); font-weight: 600; }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--navy);
+    padding: 56px 40px;
+    text-align: center;
+  }
+  .cta-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .cta-title {
+    font-family: 'Pretendard', sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    color: var(--white);
+    margin-bottom: 10px;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+  }
+  .cta-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 32px;
+  }
+  .cta-deadline {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--gold-light);
+    border: 1px solid rgba(200,151,42,0.4);
+    padding: 6px 20px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    letter-spacing: 0.05em;
+  }
+  .apply-btn {
+    display: inline-block;
+    background: var(--blue);
+    color: var(--white);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 16px 52px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: background .2s, transform .15s;
+    text-decoration: none;
+  }
+  .apply-btn:hover {
+    background: var(--blue-light);
+    transform: translateY(-2px);
+  }
+  .cta-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 16px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: #06101E;
+    padding: 28px 40px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  @media (max-width: 600px) {
+    .goal-cards { grid-template-columns: 1fr; }
+    .overview-grid { grid-template-columns: 1fr; }
+    .benefits { grid-template-columns: 1fr; }
+    .week-row { grid-template-columns: 60px 70px 1fr; }
+    .week-row .wc:nth-child(3) { display: none; }
+    .week-row.header .wc:nth-child(3) { display: none; }
+    .stats-bar { gap: 20px; }
+    .stat { border-right: none; padding: 0 20px; }
+    .instructor-card { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">FF Academy</div>
+  <h1><em>LinkedIn</em> 활용 전략</h1>
+  <p class="hero-sub">LinkedIn으로 만드는 기회와 연결</p>
+  <div class="hero-divider"></div>
+  <p class="hero-tagline">
+    LinkedIn, 단순한 프로필 관리가 아니라<br>
+     네트워킹과 기회로 연결되는 채널이라는 거 알고 계셨나요?<br>
+    이번 교육에서는 실제로 LinkedIn을 통해 기회를 만들어낸 사례를 바탕으로,<br>
+    누구나 부담 없이 시작하고 꾸준히 활용할 수 있는 방법을 함께 만들어봅니다.
+  </p>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <span class="stat-num">6주</span>
+    <div class="stat-label">교육 기간</div>
+  </div>
+  <div class="stat">
+    <span class="stat-num">12–16명</span>
+    <div class="stat-label">전 직원 대상</div>
+  </div>
+  <div class="stat">
+    <span class="stat-num">3회</span>
+    <div class="stat-label">실전 포스팅 포함</div>
+  </div>
+  <div class="stat">
+    <span class="stat-num">30+</span>
+    <div class="stat-label">네트워킹 기회 확보</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- 교육 목적 -->
+  <section class="section">
+    <div class="section-label">Why</div>
+    <div class="section-title">교육 목적</div>
+    <div class="goal-cards">
+      <div class="goal-card">
+        <span class="goal-icon">🚀</span>
+        <div class="goal-title">개인 역량 강화</div>
+        <div class="goal-desc">LinkedIn 프로필·콘텐츠 운영 능력을 키워 커리어 경쟁력과 전문성 향상</div>
+      </div>
+      <div class="goal-card">
+        <span class="goal-icon">📣</span>
+        <div class="goal-title">전사 홍보 채널 구축</div>
+        <div class="goal-desc">개개인이 패스트파이브의 공식 브랜드 앰배서더로 성장해 신뢰 기반 마케팅 채널 확보</div>
+      </div>
+      <div class="goal-card">
+        <span class="goal-icon">💼</span>
+        <div class="goal-title">소셜 셀링 역량</div>
+        <div class="goal-desc">단순 영업이 아닌 콘텐츠를 통한 잠재 고객 접점 확대 및 비즈니스 리드 발굴</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 교육 개요 -->
+  <section class="section">
+    <div class="section-label">Overview</div>
+    <div class="section-title">교육 개요</div>
+    <div class="overview-grid">
+      <div class="overview-item">
+        <span class="ov-key">대상</span>
+        <span class="ov-val">패스트파이브 <strong>전 임직원</strong></span>
+      </div>
+      <div class="overview-item">
+        <span class="ov-key">기간</span>
+        <span class="ov-val"><strong>총 6주</strong> (5/13(목) ~ 6/11(목))</span>
+      </div>
+      <div class="overview-item">
+        <span class="ov-key">모집 인원</span>
+        <span class="ov-val"><strong>12–16명</strong></span>
+      </div>
+      <div class="overview-item">
+        <span class="ov-key">형태</span>
+        <span class="ov-val">대면 강의(1회) + 실습 과제 + 성과 공유</span>
+      </div>
+      <div class="overview-item">
+        <span class="ov-key">대면 교육</span>
+        <span class="ov-val">장소 추후 공지, 오후 7시부터</span>
+      </div>
+      <div class="overview-item">
+        <span class="ov-key">수료</span>
+        <span class="ov-val">대면 강의 참석 + 과제 100% 이행</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 강사 소개 -->
+  <section class="section">
+    <div class="section-label">Instructor</div>
+    <div class="section-title">강사 소개</div>
+    <div class="instructor-card">
+      <div class="instructor-avatar">😊</div>
+      <div>
+        <div class="instructor-name">원혜리 팀장님</div>
+        <div class="instructor-role">LinkedIn Ambassador · 패스트파이브</div>
+        <div class="instructor-bio">
+          이전 직장에서 대표님의 권유로 링크드인을 시작하게 되어, 링크드인을 통해 수많은 기회를 얻게 되었습니다.<br>
+          패스트파이브가 기업들에게 제공할 수 있는 가치에 비해 링크드인 채널이 조용한 게 아쉬웠고, <br>
+          그 경험을 직접 나눠드리기 위해 이 강의를 진행하게 되었습니다.<br>          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 커리큘럼 -->
+  <section class="section">
+    <div class="section-label">Curriculum</div>
+    <div class="section-title">6주 커리큘럼</div>
+    <div class="curriculum">
+
+      <div class="curr-card">
+        <div class="curr-left">
+          <div class="curr-week w1-bg">1회차</div>
+          <div class="curr-date">5/13 (수)</div>
+        </div>
+        <div class="curr-body">
+          <div class="curr-title-row">
+            <span class="curr-title">LinkedIn 바로알기</span>
+            <span class="curr-type-badge">대면 강의</span>
+          </div>
+          <div class="curr-desc">혜리님의 사례를 통해 링크드인 B2B 특성을 이해하고, 프로필 세팅 및 검색 최적화 방법을 배웁니다.</div>
+        </div>
+      </div>
+
+      <div class="curr-card">
+        <div class="curr-left">
+          <div class="curr-week w2-bg">2회차</div>
+        </div>
+        <div class="curr-body">
+          <div class="curr-title-row">
+            <span class="curr-title">프로필 완성하기 실습</span>
+            <span class="curr-type-badge">개별 과제</span>
+          </div>
+          <div class="curr-desc">프로필·배너·헤드라인·경력 및 스킬 입력까지, 내 프로필을 조금 더 ‘나답게’ 정리해봅니다.</div>
+        </div>
+      </div>
+
+      <div class="curr-card">
+        <div class="curr-left">
+          <div class="curr-week w3-bg">3-5회차</div>
+        </div>
+        <div class="curr-body">
+          <div class="curr-title-row">
+            <span class="curr-title">콘텐츠 전략 실습</span>
+            <span class="curr-type-badge">개별 과제</span>
+          </div>
+          <div class="curr-desc">다양한 주제의 콘텐츠를 작성하고 교류하며 네트워크를 확장합니다. </div>
+        </div>
+      </div>
+
+      <div class="curr-card">
+        <div class="curr-left">
+          <div class="curr-week w4-bg">6회차</div>
+        </div>
+        <div class="curr-body">
+          <div class="curr-title-row">
+            <span class="curr-title">성과 공유 및 논의</span>
+            <span class="curr-type-badge">대면or비대면</span>
+          </div>
+          <div class="curr-desc">개별 성과를 함께 리뷰하고 우수 사례를 나눕니다. 앞으로도 지속 가능한 링크드인 운영 전략과 습관화 방법을 설계합니다.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 참여 혜택 -->
+  <section class="section">
+    <div class="section-label">Who</div>
+    <div class="section-title">이런 분께 추천합니다</div>
+    <div class="benefits">
+      <div class="benefit-item">
+        <div class="benefit-dot"></div>
+        <div class="benefit-text">
+          <strong>하나,</strong>
+          LinkedIn을 시작하고 싶지만 어떻게 써야 할지 모르겠는 분
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-dot"></div>
+        <div class="benefit-text">
+          <strong>둘,</strong>
+          업무 외적으로 네트워크를 넓히고 싶은 분
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-dot"></div>
+        <div class="benefit-text">
+          <strong>셋,</strong>
+          나의 경험을 콘텐츠로 정리하고 싶은 분
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-dot"></div>
+        <div class="benefit-text">
+          <strong>넷,</strong>
+          가볍게 시작해보고 싶은 분(부담없이👍)
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 유의사항 -->
+  <section class="section">
+    <div class="section-label">Notice</div>
+    <div class="section-title">신청 전 확인하세요</div>
+    <div class="notice-box">
+      <p>📌 <strong>정원 12~16명</strong>의 소수 정예로 운영되며, 신청 인원 초과 시 신청서를 바탕으로 선정합니다.</p>
+      <p>📌 <strong>1주차 대면 강의 참석이 필수</strong>입니다. 불참 시 수료가 어려울 수 있습니다.</p>
+      <p>📌 과제는 <strong>4회 중 3회 이상 제출</strong>해야 수료 인정됩니다.</p>
+      <p>📌 당장 링크드인 계정이 없어도 괜찮습니다.
+    </div>
+  </section>
+
+</main>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-label">Apply Now</div>
+  <div class="cta-title">지금 신청하세요</div>
+  <div><span class="cta-deadline">⏰ 신청 마감: 5/6(수)</span></div>
+  <br>
+  <a href="https://forms.gle/34Ce9aJHoNsqh28Z9" class="apply-btn" target="_blank">
+    교육 신청하기
+  </a>
+  <div class="cta-note">선정되신 분들은 별도 채널로 안내 드립니다</div>
+</section>
+
+<footer class="footer">
+  © 2026 FastFive · FF Academy · 문의: @구연정
+</footer>
+
+</body>
+</html>
