@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF Academy — CM Operation 역량 강화 교육</title>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f6f3;
+    --surface: #ffffff;
+    --border: #e4e2dc;
+    --text-primary: #1a1a1a;
+    --text-secondary: #6b6860;
+    --text-muted: #9e9b95;
+    --accent: #e8421a;
+    --accent-bg: #fdf1ee;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--text-primary);
+    margin-bottom: 2.5rem;
+  }
+
+  .header-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+  }
+
+  .header-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-sub {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  /* ── META CHIPS ── */
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.8rem;
+    border-radius: 100px;
+  }
+
+  .chip-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 2.5rem; }
+
+  .section-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── GOALS ── */
+  .goals { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .goal {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.9rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+
+  .goal-num {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--accent);
+    min-width: 20px;
+    padding-top: 1px;
+  }
+
+  .goal-text {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  .goal-text strong { font-weight: 600; }
+
+  /* ── INFO TABLE ── */
+  .info-table { width: 100%; border-collapse: collapse; }
+
+  .info-table tr { border-bottom: 1px solid var(--border); }
+  .info-table tr:last-child { border-bottom: none; }
+
+  .info-table td {
+    padding: 0.85rem 0;
+    vertical-align: top;
+    font-size: 0.9rem;
+  }
+
+  .info-table td:first-child {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.82rem;
+    width: 90px;
+    padding-top: 0.95rem;
+  }
+
+  .info-table td:last-child {
+    color: var(--text-primary);
+  }
+
+  .info-table td small {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.15rem;
+  }
+
+  /* ── SESSIONS ── */
+  .sessions { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .session {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .session-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .session-round {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--surface);
+    background: var(--text-primary);
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+  }
+
+  .session-team {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    flex: 1;
+  }
+
+  .session-location {
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .tbd-tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    background: var(--accent-bg);
+    border: 1px solid rgba(232,66,26,0.2);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }
+
+  .session-body { padding: 1rem; }
+
+  .session-subject {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.65rem;
+  }
+
+  .session-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .session-items li {
+    font-size: 0.83rem;
+    color: var(--text-secondary);
+    padding-left: 0.9rem;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .session-items li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+  }
+
+  .session-items li.sub {
+    padding-left: 1.6rem;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+  }
+
+  .session-items li.sub::before {
+    left: 0.75rem;
+  }
+
+  /* ── DATE ROW ── */
+  .session-date-row {
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.7rem 1rem;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+  }
+
+  .date-item { display: flex; align-items: center; gap: 0.4rem; }
+
+  .date-label {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .date-val {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+  }
+
+  /* ── APPLY ── */
+  .apply-box {
+    background: var(--text-primary);
+    border-radius: 8px;
+    padding: 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+
+  .apply-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f7f6f3;
+    margin-bottom: 0.3rem;
+  }
+
+  .apply-sub {
+    font-size: 0.82rem;
+    color: rgba(247,246,243,0.45);
+    line-height: 1.5;
+  }
+
+  .apply-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, transform 0.15s;
+  }
+
+  .apply-btn:hover { background: #d03516; transform: translateY(-1px); }
+
+  /* ── NOTICE ── */
+  .notice {
+    background: var(--accent-bg);
+    border: 1px solid rgba(232,66,26,0.15);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .notice p {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  .notice strong { font-weight: 600; color: var(--text-primary); }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .footer-logo {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-logo span { color: var(--accent); }
+
+  .footer-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-eyebrow">FF Academy · 2026</div>
+    <h1 class="header-title">CM Operation 역량 강화 교육</h1>
+    <p class="header-sub">지점 자체 대응 역량 강화 및 부서 이관 프로세스 내재화를 위한 실무 강의</p>
+  </div>
+
+  <!-- META CHIPS -->
+  <div class="meta-row">
+    <div class="chip"><div class="chip-dot"></div>2026년 5월</div>
+    <div class="chip"><div class="chip-dot"></div>총 3회차</div>
+    <div class="chip"><div class="chip-dot"></div>20명 내외</div>
+    <div class="chip"><div class="chip-dot"></div>대면 교육</div>
+    <div class="chip"><div class="chip-dot"></div>지점 파트장 필참</div>
+  </div>
+
+  <!-- NOTICE -->
+  <div class="notice">
+    <p>
+      지점 운영에 핵심이 되는 내용인 만큼, <strong>지점 파트장께서는</strong> 전 일정 참석을 원칙으로 합니다.<br>
+      파트장 외에 교육 참여를 희망하는 매니저님들은 하단 신청 버튼을 통해 접수해 주세요.<br>
+    </p>
+  </div>
+
+  <!-- 교육 목표 -->
+  <div class="section">
+    <div class="section-title">교육 목표</div>
+    <div class="goals">
+      <div class="goal">
+        <div class="goal-num">01</div>
+        <div class="goal-text"><strong>지점 자체 대응 역량 강화</strong><br> — IT, 시설 등 주요 장애 발생 시 매니저가 1차 진단·대응할 수 있는 기술적 숙련도를 확보한다.</div>
+      </div>
+      <div class="goal">
+        <div class="goal-num">02</div>
+        <div class="goal-text"><strong>부서 이관 프로세스 내재화</strong><br> — 타 부서 이관 시 언제·어떻게·어떤 정보를 담아 이관할지 명확히 습득하여 불필요한 소통을 줄인다.</div>
+      </div>
+      <div class="goal">
+        <div class="goal-num">03</div>
+        <div class="goal-text"><strong>고객 만족도 상승</strong><br> — 현장 해결 범위와 부서 이관 시점을 정확히 알고 고객에게 명확한 안내를 제공할 수 있다.</div>
+      </div>
+  </div>
+  </div>
+
+  <!-- 교육 개요 -->
+  <div class="section">
+    <div class="section-title">교육 개요</div>
+    <table class="info-table">
+      <tr>
+        <td>교육 대상</td>
+        <td>지점운영그룹<small>전 지점 파트장 필참 + 교육 희망자</small></td>
+      </tr>
+      <tr>
+        <td>교육 기간</td>
+        <td>5/14(목) ~ 5/28(목)<small>총 3회 진행</small></td>
+      </tr>
+      <tr>
+        <td>모집 인원</td>
+        <td>20명 내외</td>
+      </tr>
+      <tr>
+        <td>교육 형태</td>
+        <td>대면 교육</td>
+      </tr>
+      <tr>
+        <td>교육 장소</td>
+        <td>패스트파이브 세미나실, 오후 6시 시작 예정</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- 커리큘럼 -->
+  <div class="section">
+    <div class="section-title">교육 일정 및 커리큘럼</div>
+    <div class="sessions">
+
+      <div class="session">
+        <div class="session-header">
+          <span class="session-round">1회차</span>
+          <span class="session-team">IT기획운영팀</span>
+        </div>
+        <div class="session-body">
+          <div class="session-subject">IT 인프라 이해와 현장 대응 기준</div>
+          <ul class="session-items">
+            <li>IT기획운영팀 소개</li>
+            <li>현장에서 꼭 알아야 할 기본 개념
+              <ul class="session-items" style="margin-top:0.25rem;">
+                <li class="sub">인터넷, 네트워크 구성, IP 종류 등</li>
+                <li class="sub">현장 대응 매뉴얼</li>
+              </ul>
+            </li>
+            <li>지점에서 자주 묻는 케이스</li>
+            <li>업무 협조시 꼭 입력해야 할 정보</li>
+          </ul>
+        </div>
+        <div class="session-date-row">
+          <div class="date-item">
+            <span class="date-label">일자</span>
+           <span class="tbd-tag">5/14(목) 18시</span><br>
+            <span class="date-label">장소</span><br>
+            <span class="tbd-tag">삼성4호점 세미나실</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="session-header">
+          <span class="session-round">2회차</span>
+          <span class="session-team">오피스운영팀 · 공간유지관리파트</span>
+        </div>
+        <div class="session-body">
+          <div class="session-subject">공간·설비 트러블슈팅과 협업 요청 기준</div>
+          <ul class="session-items">
+            <li>파트 소개</li>
+            <li>현장에서 꼭 알아야 할 기본 개념
+              <ul class="session-items" style="margin-top:0.25rem;">
+                <li class="sub">공조설비, 도어락, 위생설비, 전등 등</li>
+                <li class="sub">유형별 1차 대응법</li>
+              </ul>
+            </li>
+            <li>업무 협조시 확인해야 할 정보</li>
+          </ul>
+        </div>
+        <div class="session-date-row">
+          <div class="date-item">
+            <span class="date-label">일자</span>
+            <span class="tbd-tag">5/21(목) 18시</span><br>
+            <span class="date-label">장소</span><br>
+            <span class="tbd-tag">신논현2호점 세미나실</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="session-header">
+          <span class="session-round">3회차</span>
+          <span class="session-team">오피스운영팀 · 구매물류파트 · 오피스서비스파트</span>
+        </div>
+        <div class="session-body">
+          <div class="session-subject">구매·서비스 요청 흐름과 협업 가이드라인</div>
+          <ul class="session-items">
+            <li>파트 소개</li>
+            <li>지점에서 자주 묻는 케이스</li>
+            <li>업무 협조 가이드라인</li>
+          </ul>
+        </div>
+        <div class="session-date-row">
+          <div class="date-item">
+            <span class="date-label">일자</span>
+            <span class="tbd-tag">5/28(목) 18시</span><br>
+            <span class="date-label">장소</span><br>
+            <span class="tbd-tag">합정1호점 세미나실</span>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- APPLY -->
+  <div class="apply-box">
+    <div class="apply-text">
+      <div class="apply-title">교육 신청하기</div>
+    </div>
+    <a href="https://forms.gle/a9uw8b2drbEhUAqL9" target="_blank" class="apply-btn">
+      바로가기
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-logo">FF Academy</div>
+    <div class="footer-note">문의 · @구연정</div>
+  </div>
+
+</div>
+</body>
+</html>
