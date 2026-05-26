@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF Academy — AI 활용 교육 (Gemini 기초) 모집 공고</title>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafaf7;
+    --surface: #ffffff;
+    --surface2: #f4f3ee;
+    --border: #e8e6df;
+    --border2: #d6d4cc;
+    --text-primary: #18181a;
+    --text-secondary: #5a5955;
+    --text-muted: #9a9890;
+    --accent: #d4a800;
+    --accent-bright: #f5c800;
+    --accent-dim: rgba(212,168,0,0.10);
+    --accent-dim2: rgba(212,168,0,0.05);
+    --blue: #2563eb;
+    --blue-dim: rgba(37,99,235,0.08);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+
+  /* ── HEADER ── */
+  .header { margin-bottom: 2.5rem; }
+
+  .header-eyebrow {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.9rem;
+  }
+
+  .header-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.02em;
+  }
+
+  .header-title em {
+    font-style: normal;
+    background: var(--accent-bright);
+    padding: 0 6px 2px;
+    border-radius: 4px;
+    color: #18181a;
+  }
+
+  .header-sub {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .header-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 2rem 0;
+  }
+
+  /* ── META CHIPS ── */
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--surface);
+    border: 1px solid var(--border2);
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+  }
+
+  .chip-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 2.5rem; }
+
+  .section-title {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── NOTICE ── */
+  .notice {
+    background: var(--accent-dim2);
+    border: 1px solid rgba(212,168,0,0.18);
+    border-left: 3px solid var(--accent-bright);
+    border-radius: 0 6px 6px 0;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .notice p {
+    font-size: 0.83rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .notice strong { color: var(--text-primary); font-weight: 600; }
+
+  /* ── GOALS ── */
+  .goals { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .goal {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.85rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .goal-num {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--accent);
+    min-width: 20px;
+    padding-top: 2px;
+    letter-spacing: 0.04em;
+  }
+
+  .goal-text {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* ── INFO TABLE ── */
+  .info-table { width: 100%; border-collapse: collapse; }
+
+  .info-table tr { border-bottom: 1px solid var(--border); }
+  .info-table tr:last-child { border-bottom: none; }
+
+  .info-table td {
+    padding: 0.8rem 0;
+    vertical-align: top;
+    font-size: 0.88rem;
+  }
+
+  .info-table td:first-child {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.78rem;
+    width: 88px;
+    padding-top: 0.9rem;
+  }
+
+  .info-table td:last-child { color: var(--text-secondary); }
+
+  .info-table td small {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+
+  /* ── 타임라인 ── */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: var(--border2);
+  }
+
+  .tl-item {
+    position: relative;
+    padding: 0 0 1.4rem 1.25rem;
+  }
+
+  .tl-item:last-child { padding-bottom: 0; }
+
+  .tl-dot {
+    position: absolute;
+    left: -1.5rem;
+    top: 5px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 2px solid var(--border2);
+  }
+
+  .tl-dot.offline {
+    background: var(--accent-bright);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-dim);
+  }
+
+  .tl-header {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .tl-week {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  .tl-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .tl-date {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+
+  .tag {
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .tag-offline {
+    color: #7a5c00;
+    background: rgba(212,168,0,0.15);
+    border: 1px solid rgba(212,168,0,0.3);
+  }
+
+  .tag-self {
+    color: var(--blue);
+    background: var(--blue-dim);
+    border: 1px solid rgba(37,99,235,0.18);
+  }
+
+  .tl-body {
+    font-size: 0.83rem;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* ── 수료 조건 ── */
+  .conditions {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .condition {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .condition:last-child { border-bottom: none; }
+
+  .condition-check {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 1px solid rgba(212,168,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    font-size: 10px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .condition-text {
+    font-size: 0.87rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  .condition-text strong { color: var(--text-primary); font-weight: 600; }
+  .condition-text small {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-top: 0.1rem;
+  }
+
+  /* ── 추천 대상 ── */
+  .recommend-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.45rem;
+  }
+
+  .recommend-item {
+    font-size: 0.83rem;
+    color: var(--text-secondary);
+    padding: 0.7rem 0.9rem 0.7rem 1.75rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    line-height: 1.55;
+    position: relative;
+  }
+
+  .recommend-item::before {
+    content: '→';
+    position: absolute;
+    left: 0.65rem;
+    top: 0.72rem;
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  /* ── APPLY ── */
+  .apply-box {
+    background: var(--text-primary);
+    border-radius: 8px;
+    padding: 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .apply-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fafaf7;
+    margin-bottom: 0.2rem;
+    letter-spacing: -0.01em;
+  }
+
+  .apply-sub {
+    font-size: 0.82rem;
+    color: rgba(250,250,247,0.4);
+  }
+
+  .apply-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-bright);
+    color: #18181a;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+
+  .apply-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .footer-logo {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  .footer-logo em { font-style: normal; color: var(--accent); }
+
+  .footer-note { font-size: 0.75rem; color: var(--text-muted); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="header-eyebrow">FF Academy · 2026 · 1기 모집</div>
+    <h1 class="header-title">AI 활용 교육 — <em>Gemini 기초</em></h1>
+    <p class="header-sub">AI, 어디서부터 시작해야 할지 모르겠다면?<br> 우리 회사 도구인 Gemini로 내 업무에 바로 쓸 수 있는 AI 활용법을 배웁니다.</p>
+    <div class="header-divider"></div>
+  </div>
+
+  <div class="meta-row">
+    <div class="chip"><div class="chip-dot"></div>6/9 ~ 7/14</div>
+    <div class="chip"><div class="chip-dot"></div>총 6주</div>
+    <div class="chip"><div class="chip-dot"></div>20명 이하</div>
+    <div class="chip"><div class="chip-dot"></div>자기주도 + 대면 2회</div>
+    <div class="chip"><div class="chip-dot"></div>신청 마감 6/2(화)</div>
+  </div>
+
+  <div class="notice">
+    <p>
+      본 교육은 <strong>AI를 처음 업무에 적용해보고 싶은 분</strong>을 위한 기초 과정입니다.<br>
+      자기주도 학습 중심이므로 <strong>매주 1~2시간의 자율 학습 시간</strong>을 확보할 수 있는 분께 추천드립니다.
+    </p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">이런 분께 추천해요</div>
+    <div class="recommend-list">
+      <div class="recommend-item">AI를 써봤는데 업무에 어떻게 연결할지 모르는 분</div>
+      <div class="recommend-item">프롬프트를 잘 써서 원하는 결과를 뽑고 싶은 분</div>
+      <div class="recommend-item">Gemini·NotebookLM을 제대로 써보고 싶은 분</div>
+      <div class="recommend-item">우리 팀만의 AI 활용법을 찾고 싶은 분</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">교육 개요</div>
+    <table class="info-table">
+      <tr>
+        <td>교육 대상</td>
+        <td>전 부서 임직원<small>AI 기초 역량을 키우고 싶은 분 누구나</small></td>
+      </tr>
+      <tr>
+        <td>모집 인원</td>
+        <td>20명 이하</td>
+      </tr>
+      <tr>
+        <td>교육 기간</td>
+        <td>6/9(화) ~ 7/14(화), 총 6주</td>
+      </tr>
+      <tr>
+        <td>교육 형태</td>
+        <td>혼합형<small>자기주도 온라인 (2~5주차) + 대면 집합 2회 (1·6주차)</small></td>
+      </tr>
+      <tr>
+        <td>주요 도구</td>
+        <td>Google Gemini, NotebookLM, Gmail, Docs, Sheets 등 GWS 활용</td>
+      </tr>
+      <tr>
+        <td>운영 채널</td>
+        <td>사내 슬랙 #패파아카데미_AI입문</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">교육 목표</div>
+    <div class="goals">
+      <div class="goal">
+        <div class="goal-num">01</div>
+        <div class="goal-text">반복적이고 시간 소모적인 내 업무 1가지 이상을 AI로 줄이고 실제 결과물을 만들어낸다</div>
+      </div>
+      <div class="goal">
+        <div class="goal-num">02</div>
+        <div class="goal-text">우리 부서에서 AI를 활용할 수 있는 사례를 함께 정의한다</div>
+      </div>
+      <div class="goal">
+        <div class="goal-num">03</div>
+        <div class="goal-text">부서별 AI 활용 사례를 모아 사내 Best Practice로 축적한다</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">커리큘럼</div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot offline"></div>
+        <div class="tl-header">
+          <span class="tl-week">1주차</span>
+          <span class="tl-title">Orientation</span>
+          <span class="tag tag-offline">대면</span>
+          <span class="tl-date">6/9(화)</span>
+        </div>
+        <div class="tl-body">교육자: 강승효 팀장님 — AI 활용 Case 공유</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span class="tl-week">2주차</span>
+          <span class="tl-title">프롬프트 작성법</span>
+          <span class="tag tag-self">자기주도</span>
+          <span class="tl-date">6/16(화)</span>
+        </div>
+        <div class="tl-body">역할·맥락·지시·출력형식 4요소 실습 · 좋은 프롬프트 vs 나쁜 프롬프트</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span class="tl-week">3주차</span>
+          <span class="tl-title">Gemini 핵심 기능 익히기</span>
+          <span class="tag tag-self">자기주도</span>
+          <span class="tl-date">6/23(화)</span>
+        </div>
+        <div class="tl-body">Deep Research · Gem 맞춤 챗봇 · 이메일 작성</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span class="tl-week">4주차</span>
+          <span class="tl-title">NotebookLM 핵심 기능 익히기</span>
+          <span class="tag tag-self">자기주도</span>
+          <span class="tl-date">6/30(화)</span>
+        </div>
+        <div class="tl-body">문서 업로드 · 인사이트 추출 · 비교 분석 · 오디오 오버뷰</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-header">
+          <span class="tl-week">5주차</span>
+          <span class="tl-title">GWS 활용법</span>
+          <span class="tag tag-self">자기주도</span>
+          <span class="tl-date">7/7(화)</span>
+        </div>
+        <div class="tl-body">Gemini in Gmail · Docs · Sheets 실습</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot offline"></div>
+        <div class="tl-header">
+          <span class="tl-week">6주차</span>
+          <span class="tl-title">부서별 AI 활용 사례 공유</span>
+          <span class="tag tag-offline">대면</span>
+          <span class="tl-date">7/14(화)</span>
+        </div>
+        <div class="tl-body">5주간 학습 회고 · 부서별 AI 활용 가능성 공유</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">수료 조건</div>
+    <div class="conditions">
+      <div class="condition">
+        <div class="condition-check">✓</div>
+        <div class="condition-text">
+          <strong>대면 교육 2회 필참</strong>
+          <small>1주차 (6/9) · 6주차 (7/14) 모두 참석</small>
+        </div>
+      </div>
+      <div class="condition">
+        <div class="condition-check">✓</div>
+        <div class="condition-text">
+          <strong>자기주도 미션 3회 이상 제출</strong>
+          <small>2~5주차 중 3회 이상 슬랙 채널에 결과물 공유</small>
+        </div>
+      </div>
+      <div class="condition">
+        <div class="condition-check">✓</div>
+        <div class="condition-text">
+          <strong>최종 산출물 제출</strong>
+          <small>6주차 부서별 AI 활용 사례 완성</small>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:0.6rem; padding:0.85rem 1rem; background:var(--surface); border:1px solid var(--border); border-radius:6px;">
+      <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.7;">
+        수료 조건 충족 시 <strong style="color:var(--text-primary);">수료증 발급</strong><br>
+        전 과제 제출 + 우수 사례 선정 시 <strong style="color:var(--accent);">베스트 러너 선정 및 사내 공유</strong>
+      </p>
+    </div>
+  </div>
+
+  <div class="apply-box">
+    <div>
+      <div class="apply-title">교육 신청하기</div>
+      <div class="apply-sub">신청 마감 · 6/2(화) 16시</div>
+    </div>
+    <a href="#" class="apply-btn">
+      바로가기
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo">FF <em>Academy</em></div>
+    <div class="footer-note">문의 · @담당자</div>
+  </div>
+
+</div>
+</body>
+</html>
