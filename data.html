@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FF Academy — 데이터 활용 & SQL 특강</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0f4ff;
+    --surface: #ffffff;
+    --surface-2: #f8f9ff;
+    --border: #dde3f5;
+    --text-primary: #1a1f36;
+    --text-secondary: #5a6282;
+    --text-muted: #9ba4c0;
+    --accent: #3d5bf6;
+    --accent-light: #eef0fe;
+    --accent-border: rgba(61,91,246,0.2);
+    --mono: 'Plus Jakarta Sans', sans-serif;
+    --sans: 'Noto Sans KR', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+
+  /* HEADER */
+  .header { margin-bottom: 2.5rem; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+
+  .header-title {
+    font-family: var(--mono);
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.9rem;
+  }
+
+  .header-title em {
+    font-style: normal;
+    background: linear-gradient(135deg, #3d5bf6, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .header-sub {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    max-width: 500px;
+  }
+
+  /* CHIPS */
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--mono);
+    font-size: 0.73rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+  }
+
+  .chip-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* SECTION */
+  .section { margin-bottom: 2.5rem; }
+
+  .section-title {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* NOTICE */
+  .notice {
+    background: var(--accent-light);
+    border: 1px solid var(--accent-border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.1rem;
+    margin-bottom: 2.5rem;
+  }
+  .notice p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .notice strong { font-weight: 600; color: var(--text-primary); }
+
+  /* INFO TABLE */
+  .info-table { width: 100%; border-collapse: collapse; }
+  .info-table tr { border-bottom: 1px solid var(--border); }
+  .info-table tr:last-child { border-bottom: none; }
+  .info-table td { padding: 0.8rem 0; vertical-align: top; font-size: 0.88rem; }
+  .info-table td:first-child {
+    font-family: var(--mono);
+    font-size: 0.73rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    width: 88px;
+    padding-top: 0.92rem;
+  }
+  .info-table td small {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+    margin-top: 0.1rem;
+  }
+
+  /* CURRICULUM CARDS */
+  .sessions { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .session {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .session-header {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .session-round {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #fff;
+    background: var(--accent);
+    padding: 0.22rem 0.55rem;
+    border-radius: 4px;
+    text-align: center;
+  }
+
+  .session-team {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .date-badge {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid var(--accent-border);
+    padding: 0.18rem 0.55rem;
+    border-radius: 4px;
+  }
+
+  .session-body { padding: 1rem 1.1rem; }
+
+  .session-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .session-list li {
+    font-size: 0.87rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding-left: 1.1rem;
+    position: relative;
+  }
+
+  .session-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 0.22rem 0.6rem;
+    border-radius: 4px;
+  }
+
+  .tag.accent {
+    color: var(--accent);
+    background: var(--accent-light);
+    border-color: var(--accent-border);
+    font-weight: 600;
+  }
+
+  /* APPLY */
+  .apply-box {
+    background: var(--accent);
+    border-radius: 12px;
+    padding: 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .apply-title {
+    font-family: var(--mono);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+  }
+
+  .apply-sub {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.55);
+  }
+
+  .apply-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff;
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    padding: 0.72rem 1.4rem;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: opacity 0.15s, transform 0.1s;
+  }
+
+  .apply-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .footer-logo {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .footer-logo span { color: var(--accent); }
+
+  .footer-note {
+    font-family: var(--mono);
+    font-size: 0.73rem;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="eyebrow">FF Academy · Special Lecture · 2026</div>
+    <h1 class="header-title">데이터 활용 &<br><em>SQL 특강</em></h1>
+    <p class="header-sub">BigQuery로 실무 데이터를 직접 다뤄보는 2주 특강입니다.</p>
+  </div>
+
+  <div class="meta-row">
+    <div class="chip"><div class="chip-dot"></div>2026년 6월</div>
+    <div class="chip"><div class="chip-dot"></div>총 2회차</div>
+    <div class="chip"><div class="chip-dot"></div>비전공자 환영</div>
+    <div class="chip"><div class="chip-dot"></div>대면 교육</div>
+    <div class="chip"><div class="chip-dot"></div>삼성4호점</div>
+  </div>
+
+  <div class="notice">
+    <p>SQL을 전혀 몰라도 됩니다. <strong>실제 사내 데이터를 직접 조회하는 실습 중심</strong>으로 진행되며, 수업 후 <strong>혼자서도 활용할 수 있는 수준</strong>을 목표로 합니다.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Overview</div>
+    <table class="info-table">
+      <tr>
+        <td>대상</td>
+        <td><strong>데이터 활용이 궁금한 누구나!</strong></td>
+      </tr>
+      <tr>
+        <td>교육자</td>
+        <td>조현식님 <small>크레딧사업그룹 사업기획운영팀 데이터파트</small> </td>
+      </tr>
+      <tr>
+        <td>일정</td>
+        <td>6/11(목) · 6/18(목) / 총2회</td>
+      </tr>
+      <tr>
+        <td>시간</td>
+        <td>추후 공지</td>
+      </tr>
+      <tr>
+        <td>장소</td>
+        <td>삼성4호점 세미나실</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Curriculum</div>
+    <div class="sessions">
+
+      <div class="session">
+        <div class="session-header">
+          <span class="session-round">1회차</span>
+          <span class="session-team">데이터 활용 & SQL 기초</span>
+          <span class="date-badge">6/11 목</span>
+        </div>
+        <div class="session-body">
+          <ul class="session-list">
+            <li>우리 회사 데이터가 어디에 어떻게 쌓여 있는지 파악하기</li>
+            <li>BigQuery 콘솔에서 직접 쿼리 작성 · 실행해보기</li>
+            <li>핵심 키워드 실습 — SELECT · WHERE · ORDER BY · COUNT</li>
+            <li>실제 사내 테이블로 기본 실습 진행하기</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="session">
+        <div class="session-header">
+          <span class="session-round">2회차</span>
+          <span class="session-team">SQL 활용 & 실무 적용</span>
+          <span class="date-badge">6/18 목</span>
+        </div>
+        <div class="session-body">
+          <ul class="session-list">
+            <li>GROUP BY · 집계함수로 데이터 묶고 요약하기</li>
+            <li>실제 업무 질문을 SQL로 직접 풀어보기</li>
+            <li>결과를 스프레드시트로 내보내고 차트화하기</li>
+            <li>막혔을 때 꿀팁!</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="apply-box">
+    <div>
+      <div class="apply-title">교육 신청하기</div>
+      <div class="apply-sub">신청 링크 업데이트 예정</div>
+    </div>
+    <a href="#" class="apply-btn">
+      신청 바로가기
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2.5 6.5h8M6.5 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <div class="footer">
+    <div class="footer-logo">FF <span>Academy</span></div>
+    <div class="footer-note">문의 · @구연정</div>
+  </div>
+
+</div>
+</body>
+</html>
