@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FF Academy CM Operation 교육 Review</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f9fafb;
+        }
+        /* 카드 강조 애니메이션 효과 */
+        .highlight-card {
+            border-color: #fbbf24; /* yellow-400 */
+            box-shadow: 0 10px 25px -5px rgba(251, 191, 36, 0.3);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="max-w-6xl mx-auto px-4 py-10">
+        
+        <!-- Header Section -->
+        <div class="text-center mb-10">
+            <span class="bg-[#fef3c7] text-[#92400e] px-5 py-1.5 rounded-full text-sm font-bold mb-5 inline-block tracking-wide">2026 FF Acadmey</span>
+            <h1 class="text-4xl font-extrabold mb-4 text-gray-900">CM Operation 교육 - Review</h1>
+            <p class="text-gray-500 text-lg">교육 기간: 5/14(목) ~ 5/28(목), 총 3회.</p>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="flex justify-center gap-4 mb-10">
+            <button id="tab-summary" class="px-8 py-3 rounded-full font-bold text-sm transition-all bg-gray-800 text-white shadow-md" onclick="switchTab('summary')">리포트 요약</button>
+            <button id="tab-attendance" class="px-8 py-3 rounded-full font-bold text-sm transition-all bg-white text-gray-500 border border-gray-200 hover:bg-gray-50" onclick="switchTab('attendance')">전체 출석/수료 현황</button>
+        </div>
+
+        <!-- ==========================================
+             TAB 1: 리포트 요약 (Summary Pane)
+        =========================================== -->
+        <div id="pane-summary">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-10">
+                <!-- Card 1 -->
+                <div class="bg-[#f8f7f5] rounded-xl p-5 shadow-sm">
+                    <div class="text-gray-600 text-sm font-medium mb-3">교육 대상</div>
+                    <div class="text-3xl font-black text-gray-900 mb-1">44<span class="text-lg font-normal ml-1">명</span></div>
+                    <div class="text-xs text-gray-500">설문 응답 28명</div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-[#f8f7f5] rounded-xl p-5 shadow-sm">
+                    <div class="text-gray-600 text-sm font-medium mb-3">전반적 만족도</div>
+                    <div class="text-3xl font-black text-gray-900 mb-1">4.64</div>
+                    <div class="text-xs text-gray-500">/ 5점</div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-[#f8f7f5] rounded-xl p-5 shadow-sm">
+                    <div class="text-gray-600 text-sm font-medium mb-3">업무 도움도</div>
+                    <div class="text-3xl font-black text-gray-900 mb-1">4.61</div>
+                    <div class="text-xs text-gray-500">/ 5점</div>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-[#f8f7f5] rounded-xl p-5 shadow-sm">
+                    <div class="text-gray-600 text-sm font-medium mb-3">이관 기준 명확도</div>
+                    <div class="text-3xl font-black text-gray-900 mb-1">4.61</div>
+                    <div class="text-xs text-gray-500">/ 5점</div>
+                </div>
+                <!-- Card 5 -->
+                <div class="bg-[#f8f7f5] rounded-xl p-5 shadow-sm">
+                    <div class="text-gray-600 text-sm font-medium mb-3">자체 처리 범위 확대</div>
+                    <div class="text-3xl font-black text-gray-900 mb-1">4.46</div>
+                    <div class="text-xs text-gray-500">/ 5점</div>
+                </div>
+            </div>
+
+            <hr class="border-gray-200 mb-10">
+
+            <div class="mb-12">
+                <h3 class="text-gray-700 font-bold mb-6 text-sm">항목별 평균 점수</h3>
+                <div class="space-y-4">
+                    <!-- Bar 1 -->
+                    <div class="flex items-center">
+                        <div class="w-44 text-sm font-medium text-gray-700">전반적 만족도</div>
+                        <div class="flex-1 bg-gray-100 rounded-full h-3 mx-4">
+                            <div class="bg-[#3b82f6] h-3 rounded-full" style="width: 92.8%"></div>
+                        </div>
+                        <div class="w-12 text-right font-bold text-gray-900">4.64</div>
+                    </div>
+                    <!-- Bar 2 -->
+                    <div class="flex items-center">
+                        <div class="w-44 text-sm font-medium text-gray-700">업무 도움도</div>
+                        <div class="flex-1 bg-gray-100 rounded-full h-3 mx-4">
+                            <div class="bg-[#3b82f6] h-3 rounded-full" style="width: 92.2%"></div>
+                        </div>
+                        <div class="w-12 text-right font-bold text-gray-900">4.61</div>
+                    </div>
+                    <!-- Bar 3 -->
+                    <div class="flex items-center">
+                        <div class="w-44 text-sm font-medium text-gray-700">이관 판단 기준 명확도</div>
+                        <div class="flex-1 bg-gray-100 rounded-full h-3 mx-4">
+                            <div class="bg-[#3b82f6] h-3 rounded-full" style="width: 92.2%"></div>
+                        </div>
+                        <div class="w-12 text-right font-bold text-gray-900">4.61</div>
+                    </div>
+                    <!-- Bar 4 -->
+                    <div class="flex items-center">
+                        <div class="w-44 text-sm font-medium text-gray-700">자체 처리 범위 확대</div>
+                        <div class="flex-1 bg-gray-100 rounded-full h-3 mx-4">
+                            <div class="bg-[#60a5fa] h-3 rounded-full" style="width: 89.2%"></div>
+                        </div>
+                        <div class="w-12 text-right font-bold text-gray-900">4.46</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-gray-200 mb-10">
+
+            <div class="mb-12">
+                <h3 class="text-gray-700 font-bold mb-6 text-sm">팀별 평균 점수 <span class="text-gray-400 font-normal ml-1">(전반적 만족도 기준)</span></h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Team 1 -->
+                    <div class="bg-[#f8f7f5] rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <div class="text-gray-600 font-medium mb-3 text-sm">사업1팀 (6명)</div>
+                        <div class="text-4xl font-black text-gray-900 mb-2">4.83</div>
+                        <div class="text-sm text-gray-500 mb-5">자체처리 확대도 4.83</div>
+                        <div class="flex gap-2">
+                            <span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-bold">5점 5명</span>
+                            <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded text-xs font-medium">4점 1명</span>
+                        </div>
+                    </div>
+                    <!-- Team 2 -->
+                    <div class="bg-[#f8f7f5] rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <div class="text-gray-600 font-medium mb-3 text-sm">사업2팀 (8명)</div>
+                        <div class="text-4xl font-black text-gray-900 mb-2">4.75</div>
+                        <div class="text-sm text-gray-500 mb-5">자체처리 확대도 4.25</div>
+                        <div class="flex gap-2">
+                            <span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-bold">5점 6명</span>
+                            <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded text-xs font-medium">4점 2명</span>
+                        </div>
+                    </div>
+                    <!-- Team 3 -->
+                    <div class="bg-[#f8f7f5] rounded-2xl p-6 shadow-sm border border-gray-100">
+                        <div class="text-gray-600 font-medium mb-3 text-sm">사업3팀 (14명)</div>
+                        <div class="text-4xl font-black text-gray-900 mb-2">4.50</div>
+                        <div class="text-sm text-gray-500 mb-5">자체처리 확대도 4.43</div>
+                        <div class="flex gap-2">
+                            <span class="bg-blue-50 text-blue-600 px-2 py-1 rounded text-xs font-bold">5점 9명</span>
+                            <span class="bg-gray-100 text-gray-500 px-2 py-1 rounded text-xs font-medium">4점 3명</span>
+                            <span class="bg-red-50 text-red-500 px-2 py-1 rounded text-xs font-medium">3점 2명</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-gray-200 mb-10">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
+                <!-- Pros -->
+                <div>
+                    <h3 class="text-gray-700 font-bold mb-5 text-sm">좋았던 점</h3>
+                    <div class="space-y-3">
+                        <div class="bg-[#f8f7f5] border-l-4 border-[#3b82f6] p-4 rounded-r-lg text-sm">
+                            <span class="font-bold text-gray-800">유관부서 이해 증진</span> <span class="text-gray-500">— 타 부서 업무 방식, 고충, 소통 방법을 직접 알 수 있어 유익</span>
+                        </div>
+                        <div class="bg-[#f8f7f5] border-l-4 border-[#3b82f6] p-4 rounded-r-lg text-sm">
+                            <span class="font-bold text-gray-800">실무 중심 구성</span> <span class="text-gray-500">— 실제 사례와 함께 설명하여 업무 상황에 바로 대입 가능</span>
+                        </div>
+                        <div class="bg-[#f8f7f5] border-l-4 border-[#3b82f6] p-4 rounded-r-lg text-sm">
+                            <span class="font-bold text-gray-800">팀장·파트장 직접 교육</span> <span class="text-gray-500">— 현장감 있는 내용 전달로 신뢰도 높음</span>
+                        </div>
+                        <div class="bg-[#f8f7f5] border-l-4 border-[#3b82f6] p-4 rounded-r-lg text-sm">
+                            <span class="font-bold text-gray-800">모호했던 기준 명확화</span> <span class="text-gray-500">— 이관 판단 등 기존에 불명확했던 부분 해소</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cons -->
+                <div>
+                    <h3 class="text-gray-700 font-bold mb-5 text-sm">아쉬운 점 & 개선 의견</h3>
+                    <div class="space-y-3">
+                        <div class="bg-[#f8f7f5] border-l-4 border-[#d97706] p-4 rounded-r-lg text-sm">
+                            <span class="font-bold text-gray-800">내용 방향성</span> <span class="text-gray-500">— 역량 교육보다 타부서 업무 편의 중심으로 느껴진다는 의견</span>
+                        </div>
+                        <div class="bg-[#f8f7f5] border-l-4 border-[#d97706] p-4 rounded-r-lg text-sm">
+                            <span class="font-bold text-gray-800">IT·공유관 용어 설명 부족</span> <span class="text-gray-500">— 비전문가에게 생소한 용어/개념 교육 아쉬움</span>
+                        </div>
+                        <div class="bg-[#f8f7f5] border-l-4 border-[#d97706] p-4 rounded-r-lg text-sm">
+                            <span class="font-bold text-gray-800">내용 방대함</span> <span class="text-gray-500">— 짧은 시간 대비 커버리지가 넓어 약간 아쉬움</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-gray-200 mb-10">
+
+            <div class="mb-8">
+                <h3 class="text-gray-700 font-bold mb-5 text-sm">추가로 원하는 교육 주제</h3>
+                <div class="flex flex-wrap gap-2 mb-8">
+                    <span class="bg-[#eff6ff] text-[#1d4ed8] px-4 py-2 rounded-full text-xs font-medium">인사·시프티 관련 교육</span>
+                    <span class="bg-[#eff6ff] text-[#1d4ed8] px-4 py-2 rounded-full text-xs font-medium">회계·지점 회계 처리</span>
+                    <span class="bg-[#eff6ff] text-[#1d4ed8] px-4 py-2 rounded-full text-xs font-medium">사업관리팀(호실 가격 산정·병합 가이드)</span>
+                    <span class="bg-[#eff6ff] text-[#1d4ed8] px-4 py-2 rounded-full text-xs font-medium">신규입사자 업무툴 교육</span>
+                    <span class="bg-[#eff6ff] text-[#1d4ed8] px-4 py-2 rounded-full text-xs font-medium">도급사·협력업체 직접 방문 설명</span>
+                    <span class="bg-[#eff6ff] text-[#1d4ed8] px-4 py-2 rounded-full text-xs font-medium">타부서 전 파트원 참여 교류 자리</span>
+                </div>
+
+                <div class="bg-[#f8f7f5] rounded-xl p-6 border border-gray-100 text-gray-700 text-sm leading-relaxed">
+                    전반적으로 교육 자체에 대한 만족도와 감사 표현이 많았으며, 이번 교육을 계기로 유관부서 협업에 대한 이해가 높아졌다는 반응이 주를 이룸.
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             TAB 2: 전체 출석/수료 현황 (Attendance Pane)
+        =========================================== -->
+        <div id="pane-attendance" class="hidden">
+            
+            <!-- Summary Cards for Attendance -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-blue-600 rounded-2xl p-6 text-center shadow-lg transform transition hover:-translate-y-1">
+                    <div class="text-blue-100 font-medium mb-1">총 수료 인원</div>
+                    <div class="text-4xl font-black text-white">35<span class="text-lg font-medium ml-1">명</span></div>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-2xl p-6 text-center shadow-sm">
+                    <div class="text-gray-400 font-medium mb-1">전체 대상 인원</div>
+                    <div class="text-4xl font-black text-gray-800">44<span class="text-lg font-medium ml-1">명</span></div>
+                </div>
+                <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6 text-center shadow-sm">
+                    <div class="text-gray-500 font-medium mb-1">미수료 (결석 발생)</div>
+                    <div class="text-4xl font-black text-gray-500">9<span class="text-lg font-medium ml-1">명</span></div>
+                </div>
+            </div>
+
+            <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-700 p-4 mb-6 rounded-r-lg text-sm flex items-center gap-2">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                <span><b>수료 기준:</b> 1~3회차 (5/14, 5/21, 5/28) 교육을 모두 참석한 인원 (동그라미 3개)</span>
+            </div>
+
+            <!-- Table Container -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-x-auto">
+                <table class="w-full text-sm text-left whitespace-nowrap">
+                    <thead class="bg-gray-100 text-gray-600 text-center border-b border-gray-200">
+                        <tr>
+                            <th class="p-4 font-bold">No</th>
+                            <th class="p-4 font-bold">팀</th>
+                            <th class="p-4 font-bold">담당 파트</th>
+                            <th class="p-4 font-bold">성함</th>
+                            <th class="p-4 font-bold">비고</th>
+                            <th class="p-4 font-bold">1회차 (5/14)</th>
+                            <th class="p-4 font-bold">2회차 (5/21)</th>
+                            <th class="p-4 font-bold">3회차 (5/28)</th>
+                            <th class="p-4 font-bold">수료 상태</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendance-tbody" class="text-gray-700">
+                        <!-- JS generated rows will go here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Tab switching logic
+        function switchTab(tabId) {
+            // Hide all
+            document.getElementById('pane-summary').classList.add('hidden');
+            document.getElementById('pane-attendance').classList.add('hidden');
+            
+            // Show target
+            document.getElementById('pane-' + tabId).classList.remove('hidden');
+            
+            // Reset buttons
+            const btnSummary = document.getElementById('tab-summary');
+            const btnAttendance = document.getElementById('tab-attendance');
+            
+            const inactiveClass = "px-8 py-3 rounded-full font-bold text-sm transition-all bg-white text-gray-500 border border-gray-200 hover:bg-gray-50";
+            const activeClass = "px-8 py-3 rounded-full font-bold text-sm transition-all bg-gray-800 text-white shadow-md";
+            
+            btnSummary.className = inactiveClass;
+            btnAttendance.className = inactiveClass;
+            
+            // Activate clicked button
+            document.getElementById('tab-' + tabId).className = activeClass;
+        }
+
+        // Attendance Data (44명 명단 완벽 반영)
+        const attendanceData = [
+            {no:1, team:"사업1팀", part:"마곡파트", name:"이강욱", note:"파트장", d1:"o", d2:"o", d3:"x"},
+            {no:2, team:"사업1팀", part:"마곡파트", name:"김소정", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:3, team:"사업1팀", part:"서울숲파트", name:"허종현", note:"파트장", d1:"o", d2:"x", d3:"o"},
+            {no:4, team:"사업1팀", part:"서울역파트", name:"이종민", note:"파트장", d1:"o", d2:"o", d3:"o"},
+            {no:5, team:"사업1팀", part:"서울역파트", name:"박준희", note:"5/8 추가", d1:"o", d2:"o", d3:"o"},
+            {no:6, team:"사업1팀", part:"을지로파트", name:"최민경", note:"파트장", d1:"o", d2:"o", d3:"o"},
+            {no:7, team:"사업1팀", part:"을지로파트", name:"김동규", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:8, team:"사업1팀", part:"을지로파트", name:"정다영", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:9, team:"사업1팀", part:"을지로파트", name:"조나래", note:"", d1:"o", d2:"o", d3:"x"},
+            {no:10, team:"사업1팀", part:"을지로파트", name:"조선기", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:11, team:"사업1팀", part:"홍합파트", name:"김현정", note:"파트장", d1:"o", d2:"o", d3:"o"},
+            {no:12, team:"사업1팀", part:"홍합파트", name:"김호재", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:13, team:"사업1팀", part:"홍합파트", name:"최지혜", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:14, team:"사업2팀", part:"강남파트", name:"신해온", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:15, team:"사업2팀", part:"강남파트", name:"이시환", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:16, team:"사업2팀", part:"삼성파트", name:"김현규", note:"파트장", d1:"o", d2:"o", d3:"x"},
+            {no:17, team:"사업2팀", part:"삼성파트", name:"권민혁", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:18, team:"사업2팀", part:"삼성파트", name:"주세희", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:19, team:"사업2팀", part:"선릉파트", name:"김명현", note:"파트장", d1:"o", d2:"o", d3:"o"},
+            {no:20, team:"사업2팀", part:"선릉파트", name:"박준영", note:"it만 참석", d1:"o", d2:"x", d3:"x"},
+            {no:21, team:"사업2팀", part:"선릉파트", name:"서지은", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:22, team:"사업2팀", part:"선릉파트", name:"신슬기", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:23, team:"사업2팀", part:"선릉파트", name:"이준서", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:24, team:"사업2팀", part:"역삼파트", name:"권규환", note:"파트장", d1:"o", d2:"o", d3:"o"},
+            {no:25, team:"사업2팀", part:"역삼파트", name:"김인희", note:"", d1:"o", d2:"o", d3:"x"},
+            {no:26, team:"사업2팀", part:"역삼파트", name:"정혜원", note:"", d1:"o", d2:"o", d3:"x"},
+            {no:27, team:"사업3팀", part:"강남구청파트", name:"노수빈", note:"파트장", d1:"o", d2:"o", d3:"o"},
+            {no:28, team:"사업3팀", part:"강남구청파트", name:"이소현", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:29, team:"사업3팀", part:"신논현파트", name:"정소영", note:"파트장", d1:"o", d2:"o", d3:"o"},
+            {no:30, team:"사업3팀", part:"신논현파트", name:"김영나", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:31, team:"사업3팀", part:"신논현파트", name:"신건호", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:32, team:"사업3팀", part:"신논현파트", name:"유예림", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:33, team:"사업3팀", part:"신논현파트", name:"이연주", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:34, team:"사업3팀", part:"신논현파트", name:"정의엽", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:35, team:"사업3팀", part:"신사파트", name:"정성현", note:"파트장", d1:"o", d2:"o", d3:"o"},
+            {no:36, team:"사업3팀", part:"신사파트", name:"문예지", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:37, team:"사업3팀", part:"신사파트", name:"오은비", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:38, team:"사업3팀", part:"신사파트", name:"유시아", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:39, team:"사업3팀", part:"신사파트(판교)", name:"최성만", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:40, team:"사업3팀", part:"여의도파트", name:"이바다", note:"파트장", d1:"o", d2:"x", d3:"o"},
+            {no:41, team:"사업3팀", part:"여의도파트", name:"박상현", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:42, team:"사업3팀", part:"여의도파트", name:"박인형", note:"", d1:"o", d2:"o", d3:"x"},
+            {no:43, team:"사업3팀", part:"여의도파트", name:"박현진", note:"", d1:"o", d2:"o", d3:"o"},
+            {no:44, team:"사업3팀", part:"여의도파트", name:"조문정", note:"", d1:"o", d2:"o", d3:"o"}
+        ];
+
+        // Render Table Data
+        function renderTable() {
+            const tbody = document.getElementById('attendance-tbody');
+            if(!tbody) return;
+            tbody.innerHTML = '';
+
+            attendanceData.forEach(row => {
+                // 수료 조건 판별 (3번 모두 'o' 혹은 'O'일 경우)
+                const isPass = row.d1.toLowerCase() === 'o' && row.d2.toLowerCase() === 'o' && row.d3.toLowerCase() === 'o';
+                
+                // 수료 완료 버튼/배지 생성
+                const badgeHtml = isPass 
+                    ? `<span class="inline-flex items-center px-3 py-1 bg-blue-600 text-white rounded-full text-xs font-bold shadow-sm ring-2 ring-blue-200">✨ 수료완료</span>`
+                    : `<span class="inline-flex items-center px-3 py-1 bg-gray-100 text-gray-400 rounded-full text-xs font-semibold">미수료</span>`;
+
+                const formatMark = (mark) => {
+                    const m = mark.toUpperCase();
+                    return m === 'O' 
+                        ? `<span class="text-blue-500 font-extrabold text-lg">O</span>` 
+                        : `<span class="text-red-400 font-extrabold text-lg">X</span>`;
+                };
+
+                const tr = document.createElement('tr');
+                tr.className = "border-b border-gray-100 hover:bg-blue-50/50 transition-colors";
+                tr.innerHTML = `
+                    <td class="p-3 text-center text-gray-400 font-medium">${row.no}</td>
+                    <td class="p-3 text-center text-gray-600">${row.team}</td>
+                    <td class="p-3 text-center text-gray-800">${row.part}</td>
+                    <td class="p-3 text-center text-gray-900 font-bold">${row.name}</td>
+                    <td class="p-3 text-center text-xs text-gray-400">${row.note}</td>
+                    <td class="p-3 text-center">${formatMark(row.d1)}</td>
+                    <td class="p-3 text-center">${formatMark(row.d2)}</td>
+                    <td class="p-3 text-center">${formatMark(row.d3)}</td>
+                    <td class="p-3 text-center">${badgeHtml}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // Initialize script after DOM is ready
+        window.addEventListener('DOMContentLoaded', () => {
+            renderTable();
+            // 기본 화면을 요약 탭으로 설정
+            switchTab('summary');
+        });
+    </script>
+</body>
+</html>
